@@ -1,0 +1,7 @@
+- Hospital adýnda bir blank solution oluþturduk. Altýnda Services Klasörü ekledik ve bu klasörün içine Patient(Hasta) Klasörü ekledik. Bu Klasörün içinede Hospital.Patient adýnda webAPI projesi ekledik. Hospital.Patient içinede Entites ekledik. Buraya PatientAdult ve PatientChild class oluþturduk.
+- Dtos Klasörü ekledik ve içerisine entitieslere ait DTOlarý oluþturduk.
+- Mongodb,mongodbcore ve automapper paketlerimizi kurduk. Patient servisi mongodb üzerinde çalýþcak.
+- Mapping Klasörü oluþturduk ve içerisine DTOlara ait maplemeleri yaptýk.
+- Services Klasörü oluþturduk ve içerisine patientler için servis interfacelerini yazdýk.
+- Settings Klasörü oluþturduk ve içerisine settingsleri yazdýk.
+- Services klasörü içersine interfacelere ait sýnýflarý yazmaya baþladýk.

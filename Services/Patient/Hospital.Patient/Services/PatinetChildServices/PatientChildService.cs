@@ -11,37 +11,41 @@ namespace Hospital.Patient.Services.PatinetChildServices
         private readonly IMongoCollection<PatientChild> _patientChildCollection;
         private readonly IMapper _mapper;
 
-        public PatientChildService(IMapper mapper,IDatabaseSettings _databaseSettings)
+        public PatientChildService(IMapper mapper, IDatabaseSettings _databaseSettings)
         {
-            var client=new MongoClient(_databaseSettings.ConnectionString);
+            var client = new MongoClient(_databaseSettings.ConnectionString);
             var database = client.GetDatabase(_databaseSettings.DatabaseName);
-            _patientChildCollection=database.GetCollection<PatientChild>(_databaseSettings.PatientChildCollectionName);
+            _patientChildCollection = database.GetCollection<PatientChild>(_databaseSettings.PatientChildCollectionName);
             _mapper = mapper;
         }
 
-        public Task CreatePatientChildAsync(CreatePatientChildDto createPatientChildDto)
+        public async Task CreatePatientChildAsync(CreatePatientChildDto createPatientChildDto)
         {
-            throw new NotImplementedException();
+            var value = _mapper.Map<PatientChild>(createPatientChildDto);
+            await _patientChildCollection.InsertOneAsync(value);
         }
 
-        public Task DeletePatientChildAsync(string id)
+        public async Task DeletePatientChildAsync(string id)
         {
-            throw new NotImplementedException();
+            await _patientChildCollection.DeleteOneAsync(x => x.PatientChildId == id);
         }
 
-        public Task<List<ResultPatientChildDto>> GetAllPatientChildAsync()
+        public async Task<List<ResultPatientChildDto>> GetAllPatientChildAsync()
         {
-            throw new NotImplementedException();
+            var values = await _patientChildCollection.Find(x => true).ToListAsync();
+            return _mapper.Map<List<ResultPatientChildDto>>(values);
         }
 
-        public Task<GetByIdPatientChildDto> GetByIdPatientChildAsync(string id)
+        public async Task<GetByIdPatientChildDto> GetByIdPatientChildAsync(string id)
         {
-            throw new NotImplementedException();
+            var values=await _patientChildCollection.Find(x=>x.PatientChildId==id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdPatientChildDto>(values);
         }
 
-        public Task UpdatePatientChildAsync(UpdatePatientChildDto updatePatientChildDto)
+        public async Task UpdatePatientChildAsync(UpdatePatientChildDto updatePatientChildDto)
         {
-            throw new NotImplementedException();
+            var value = _mapper.Map<PatientChild>(updatePatientChildDto);
+            await _patientChildCollection.FindOneAndReplaceAsync(x => x.PatientChildId == updatePatientChildDto.PatientChildId, value);
         }
     }
 }

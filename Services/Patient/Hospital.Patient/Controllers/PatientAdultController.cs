@@ -1,10 +1,13 @@
 ﻿using Hospital.Patient.Dtos.PatientAdultDto;
 using Hospital.Patient.Services.PatientAdultServices;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hospital.Patient.Controllers
 {
-    public class PatientAdultController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class PatientAdultController : ControllerBase
     {
         private readonly IPatientAdultService _patientAdultService;
 

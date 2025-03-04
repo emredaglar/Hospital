@@ -12,3 +12,5 @@
 -Entitylerimizi ve Context Sýnýfýmýzý oluþturduk.
 -Program.cs e postgresql için connectionstring oluturduk.
 -migration oluþturduk.
+-Entitylere ait DTolarýmýzý yazdýk.
+-Serviclerimizi yazdýk.

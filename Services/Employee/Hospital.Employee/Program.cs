@@ -1,10 +1,19 @@
 using Hospital.Employee.Context;
+using Hospital.Employee.Services.DepartmentServices;
+using Hospital.Employee.Services.DoctorServices;
+using Hospital.Employee.Services.NurseServices;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<INurseService, NurseService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 

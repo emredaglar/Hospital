@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hospital.Employee.Services.DoctorServices
 {
-    public class DoctorService:IDoctorServices
+    public class DoctorService:IDoctorService
     {
         private readonly EmployeeContext _context;
         private readonly IMapper _mapper;

@@ -2,7 +2,7 @@
 
 namespace Hospital.Employee.Services.NurseServices
 {
-    public interface INurseServices
+    public interface INurseService
     {
         Task<List<ResultNurseDto>> GetAllNursesAsync();
         Task CreateNurseAsync(CreateNurseDto createNurseDto);

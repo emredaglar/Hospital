@@ -14,3 +14,6 @@
 -migration oluþturduk.
 -Entitylere ait DTolarýmýzý yazdýk.
 -Serviclerimizi yazdýk.
+
+
+-Identity Server kurduk. cmd ile.Güvenliði saðlýycak.
